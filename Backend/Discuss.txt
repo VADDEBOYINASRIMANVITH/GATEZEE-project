@@ -1,0 +1,64 @@
+There are 6 users to our webapplication
+---------------------------------------
+
+1. student ->student collections -> belongsToMentor : Id, belongsToHod : Id,
+2. employee ->employee collection -> belongsToMentor : Id ,  
+3. hod -> hod collection 
+4. Admin -> college Student Service Center 
+5. SuperAdmin -> We 4 developers
+6. Security -> security collection
+
+Routers  And Controllers                                      
+------------------------
+
+authRouter -> authController -> Login,Reset,Forgot,Change Password,verification
+outPassRouter ->outPassController -> studentOutPass 
+                                     create,update,cancel,delete,getSingle,getAllUser
+                                  -> employeeOutPass   
+                                     create,update,cancel,delete,getSingle,getAllUser                                     
+studentRouter -> studentContoller ->create,update,delete,getSingle,getAllStudents
+employeeRouter -> employeeContoller ->create,update,delete,getSingle,getAll 
+hodRouter -> hodContoller ->create,update,delete,getSingle,getAll 
+securityRouter -> securityContoller ->create,update,delete,getSingle,getAll
+adminRouter -> adminContoller ->create,update,delete,getSingle,getAll
+superAdminRouter -> superAdminContoller ->update,delete,getSingle.
+
+
+
+
+working application by the end of Jun 1st 
+
+1. *** Scanner task-feasibilty -> less than 50% or otp  - me
+
+2. SendGrid Email / O-Auth -500 emails  -> no utmost important 
+
+3.  *** Vadar sentiment analysis / alternative -> explore 
+
+4. * Signup using MongoDb for some 15 students, 4 hods, 10 teachers 
+
+5. Dashboards -> what to visible in dashboard -> primeng diagrams  -shiva
+
+6. *** Student->  changePass, particular request comp, viewallrequest table change,..etc, update details
+
+7. Ngrx -> we will see for some implementations 
+
+       * first we should know where it is required
+
+
+
+
+ superAdmin, admin -> they are gone 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
