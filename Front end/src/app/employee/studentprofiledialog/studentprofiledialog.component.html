@@ -1,0 +1,191 @@
+<p-toast position="top-center" key="toastElement"></p-toast>
+
+<div class="container-fluid">
+  <div class="container">
+    <div class="outer-table">
+      <tr>
+        <div class="row p-4">
+          <!--first card-->
+          <div class="col-sm-4">
+            <div class="card" style="width: 18rem">
+              <img
+                class="card-img-top"
+                [src]="presentStudentImageUrl"
+                alt="Card image cap"
+              />
+              <div class="card-body" style="text-align: center">
+                <h3 class="card-title">
+                  <h5>{{ presentStudent?.Id }}</h5>
+                </h3>
+                <h5>{{ presentStudent?.department }}</h5>
+              </div>
+            </div>
+          </div>
+
+          <!--second card-->
+          <div class="col-sm-8">
+            <div class="row">
+              <div class="col-12">
+                <div class="card p-5">
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <b>Name</b>
+                      </div>
+                      <div class="col-md-6">
+                        <p>{{ presentStudent?.name }}</p>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-6">
+                        <b>E-mail</b>
+                      </div>
+                      <div class="col-md-6">
+                        <p>{{ presentStudent?.email }}</p>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-6">
+                        <b>Phone no</b>
+                      </div>
+                      <div class="col-md-6">
+                        <p>{{ presentStudent?.phone }}</p>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-6">
+                        <b>Gender</b>
+                      </div>
+                      <div class="col-md-6">
+                        <p>{{ presentStudent?.gender }}</p>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-6">
+                        <b>Batch</b>
+                      </div>
+                      <div class="col-md-6">
+                        <p>{{ presentStudent?.batch }}</p>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-6">
+                        <b>Parent Phone no</b>
+                      </div>
+                      <div class="col-md-6">
+                        <p>{{ presentStudent?.parentPhone }}</p>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-6">
+                        <b>Parent E-mail</b>
+                      </div>
+                      <div class="col-md-6">
+                        <p>{{ presentStudent?.parentEmail }}</p>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-6">
+                        <b>Status</b>
+                      </div>
+                      <div class="col-md-6">
+                        <p>{{ presentStudent?.status }}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="row p-3">
+                  <div class="col-12">
+                    <div class="card p-2">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <b>HOD Name</b>
+                        </div>
+                        <div class="col-md-6">
+                          <p>{{ presentStudentHod?.name }}</p>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-md-6">
+                          <b>HOD E-mail</b>
+                        </div>
+                        <div class="col-md-6">
+                          <p>{{ presentStudentHod?.email }}</p>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-md-6">
+                          <b>HOD Phone no</b>
+                        </div>
+                        <div class="col-md-6">
+                          <p>{{ presentStudentHod?.phone }}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-12">
+                    <br>
+                    <div class="card p-2">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <b>Mentor Name</b>
+                        </div>
+                        <div class="col-md-6">
+                          <p>{{ presentEmployee?.name }}</p>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-md-6">
+                          <b>Mentor E-mail</b>
+                        </div>
+                        <div class="col-md-6">
+                          <p>{{ presentEmployee?.email }}</p>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-md-6">
+                          <b>Mentor Phone no</b>
+                        </div>
+                        <div class="col-md-6">
+                          <p>{{ presentEmployee?.phone }}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </tr>
+
+      <tr>
+        <div class="row p-3">
+          <div class="col">
+            <p-chart
+              type="pie" width="200"
+              height="200"
+              [data]="piedata"
+              style="position: relative; height: auto"
+            ></p-chart>
+          </div>
+        </div>
+      </tr>
+    </div>
+  </div>
+</div>

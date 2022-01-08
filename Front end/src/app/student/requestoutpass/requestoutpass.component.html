@@ -1,0 +1,203 @@
+<p-toast position="top-center" key="toastElement"></p-toast>
+<div class="row">
+  <div
+    class="col text-center"
+    style="margin-top: 15px; margin-bottom: 5px; color: darkgreen"
+  >
+  <br>
+    <p style="font-size: 25px; font-weight: bold">Request New Out Pass</p>
+  </div>
+</div>
+<div class="container">
+  <div>
+    <div class="form-class">
+      <form
+        id="contact-form"
+        class="form"
+        role="form"
+        [formGroup]="form"
+        (ngSubmit)="onSubmit(); form.reset()"
+      >
+        <!-- current date -->
+        <div style="text-align: center" class="p-2">
+          <mat-form-field class="date-class" appearance="fill">
+            <mat-label style="font-weight: 500">{{ myDate | date }}</mat-label>
+            <input matInput [matDatepicker]="dp1" disabled />
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="dp1"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #dp1></mat-datepicker>
+          </mat-form-field>
+        </div>
+
+        <!-- outgoing date -->
+        <div class="form-group">
+          <div class="row">
+            <div class="col-10">
+              <label class="form-label" for="sDate">Outgoing date *</label>
+              <input
+                matInput
+                (click)="picker2.open()"
+                class="form-control"
+                placeholder="Pick Date"
+                [matDatepickerFilter]="myFilter"
+                formControlName="oDate"
+                [matDatepicker]="picker2"
+                [min]="todayDate"
+                [ngClass]="{
+                  'is-invalid':
+                    form.get('oDate').touched && form.get('oDate').invalid
+                }"
+              />
+              <div class="invalid-feedback">
+                <div>Date is required</div>
+              </div>
+            </div>
+            <div class="col-2 pt-4 date-toogle">
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="picker2"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #picker2></mat-datepicker>
+            </div>
+          </div>
+        </div>
+
+        <!-- outgoing time, toogle, return time -->
+        <div class="row">
+          <!-- outgoing time -->
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="form-label" for="stime">Outgoing time *</label>
+              <input
+                class="form-control"
+                placeholder="11:00 am to 03:00 pm"
+                [ngxTimepicker]="range"
+                min="11:00 am"
+                max="03:00 pm"
+                formControlName="oTime"
+                [ngClass]="{
+                  'is-invalid':
+                    form.get('oTime').touched && form.get('oTime').invalid
+                }"
+              />
+              <div class="invalid-feedback">
+                <div>Start Time is required</div>
+              </div>
+              <ngx-material-timepicker #range></ngx-material-timepicker>
+            </div>
+          </div>
+
+          <!-- Toogle   -->
+          <!-- <div class="form-group col-md-2 ">
+                                <label class="form-label" for="stime">optional</label>
+                                <mat-slide-toggle class="p-1" [checked]="useDefault" (change)="toggle($event)"></mat-slide-toggle>
+                            </div> -->
+
+          <!-- return time -->
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="form-label" for="stime">Return Time</label>
+              <input
+                class="form-control"
+                placeholder="12:00 pm to 03:30 pm"
+                [ngxTimepicker]="range1"
+                min="12:00 pm"
+                max="03:30 pm"
+                formControlName="rTime"
+              />
+              <ngx-material-timepicker #range1></ngx-material-timepicker>
+            </div>
+          </div>
+        </div>
+
+        <!-- select reason -->
+        <div class="form-group">
+          <label class="form-label" for="message">Select a Reason *</label>
+          <mat-select
+            class="form-control"
+            placeholder="Select reason"
+            id="reason"
+            name="reason"
+            formControlName="reason"
+            [ngClass]="{
+              'is-invalid':
+                form.get('reason').touched && form.get('reason').invalid
+            }"
+          >
+            <mat-option *ngFor="let r of reasons" [value]="r">
+              {{ r }}
+            </mat-option>
+          </mat-select>
+          <div class="invalid-feedback">
+            <div>Reason is required</div>
+          </div>
+        </div>
+
+        <!-- message box   -->
+        <div class="form-group">
+          <label class="form-label" for="message">Description (min. 20 characters) *</label>
+          <textarea
+            rows="5"
+            minlength="20"
+            cols="50"
+            name="message"
+            class="form-control"
+            id="message"
+            placeholder="Description..."
+            tabindex="4"
+            formControlName="message"
+            [ngClass]="{
+              'is-invalid':
+                form.get('message').touched && form.get('message').invalid
+            }"
+          ></textarea>
+
+          <div class="invalid-feedback">
+            <div>Description (required) must be at least 20 characters long.</div>
+          </div>
+        </div>
+
+        <!-- supporting document upload - file -->
+        <div class="form-group">
+          <label class="form-label" for="file"
+            >Upload supporting document / Proof</label
+          >
+
+          <p-fileUpload
+            customUpload="true"
+            maxFileSize="1000000"
+            fileLimit="1"
+            invalidFileSizeMessageDetail="Maximum file size allowed is 1MB"
+            invalidFileLimitMessageDetail="Maximum 1 file allowed"
+            (uploadHandler)="myUploader($event)"
+            previewWidth="40"
+            id="file"
+            name="file"
+            
+          ></p-fileUpload>
+        </div>
+
+        <!-- reset and submit buttons   -->
+        <div class="row p-2" >
+          <div class="p-2 col-6" style="text-align: end">
+            <button mat-raised-button (click)="onReset()" color="primary">
+              Reset
+            </button>
+          </div>
+          <div class="p-2" style="text-align: start">
+            <button
+              mat-raised-button
+              type="submit"
+              [disabled]="form.invalid"
+              color="primary"
+            >
+              Submit
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

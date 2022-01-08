@@ -1,0 +1,84 @@
+<div class="container">
+  <div class="row p-4">
+    <!--first card-->
+    <div class="col-sm-4">
+      <div class="card" style="width: 18rem">
+        <img
+          class="card-img-top"
+          [src]="presentHodImageUrl"
+          alt="Card image cap"
+        />
+        <div class="card-body" style="text-align: center">
+          <h3 class="card-title">
+            <h4>{{ presentHod?.Id }}</h4>
+          </h3>
+          <h5>{{ presentHod?.department }}</h5>
+        </div>
+      </div>
+
+      <div class="col-10">
+        <div class="text-center p-3">
+          <button class="btn btn-success" (click)="editProfile()">
+            Edit Profile
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!--second card-->
+    <div class="col-sm-8">
+      <div class="row">
+        <div class="col-12">
+          <div class="card p-5">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-6">
+                  <b>Name</b>
+                </div>
+                <div class="col-md-6">
+                  <p>{{ presentHod?.name }}</p>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <b>E-mail</b>
+                </div>
+                <div class="col-md-6">
+                  <p>{{ presentHod?.email }}</p>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <b>Phone no</b>
+                </div>
+                <div class="col-md-6">
+                  <p>{{ presentHod?.phone }}</p>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <b>Gender</b>
+                </div>
+                <div class="col-md-6">
+                  <p>{{ presentHod?.gender }}</p>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <b>Status</b>
+                </div>
+                <div class="col-md-6">
+                  <p>{{ presentHod?.status }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

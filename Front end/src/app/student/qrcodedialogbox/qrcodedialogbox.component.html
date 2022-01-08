@@ -1,0 +1,7 @@
+<div class="content-container">
+  <mat-toolbar color="accent">Your QR Code</mat-toolbar>
+  <mat-icon id="close-icon" (click)="onCloseDialog()">close</mat-icon>
+</div>
+<div class="containe-fluid text-center">
+  <qrcode [qrdata]="qrdata" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
+</div>

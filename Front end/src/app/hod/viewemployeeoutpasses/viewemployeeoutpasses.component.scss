@@ -1,0 +1,36 @@
+table {
+  width: 100%;
+}
+
+.search-class {
+  width: 70%;
+}
+
+:focus {
+  outline: none;
+}
+
+th {
+  background-color: orange;
+  font-size: 17px;
+  font-weight: bolder;
+}
+
+header {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+mat-toolbar {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  justify-content: center;
+}
+
+.detailsarea,
+.buttonarea,
+.tablearea,
+.backbutton-area {
+  position: relative;
+  margin-top: 2%;
+}

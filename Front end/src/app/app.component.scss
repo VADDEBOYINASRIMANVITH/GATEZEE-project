@@ -1,0 +1,18 @@
+nav div ul li .nav-link{
+   text-transform: uppercase;
+
+}
+
+
+
+nav div ul li .nav-link:hover{
+
+  border-bottom: 1px solid white;
+   transform-origin:right;
+
+   transition: transform 250ms ease-in-out;
+}
+
+//  transform:scaleX(0);
+//  transform-origin:right;
+//  transition: transform .4s linear;

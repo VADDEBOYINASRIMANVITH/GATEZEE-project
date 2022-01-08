@@ -1,0 +1,45 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    fixedInViewport
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) === false"
+  >
+    <div>
+      <mat-toolbar style="font-size: 22px;">SECURITY DESK</mat-toolbar>
+    </div>
+
+    <mat-nav-list>
+      <a mat-list-item routerLink="home"><mat-icon>home</mat-icon>Dashboard</a>
+      
+      <a mat-list-item routerLink="scanner"
+        ><mat-icon>qr_code_scanner</mat-icon>Scan QR</a
+      >
+      <a mat-list-item routerLink="changepassword"
+        ><mat-icon>lock</mat-icon>Change Password</a
+      >
+      <a mat-list-item (click)="logOut()"
+        ><mat-icon>exit_to_app</mat-icon>Logout</a
+      >
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar style="background-color: #F2AA4CFF;">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async"
+      >
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>GATEZEE</span>
+    </mat-toolbar>
+    <!-- Add Content Here -->
+
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,0 +1,122 @@
+<div class="container">
+  <div
+    class="col text-center"
+    style="margin-top: 15px; margin-bottom: 5px; color: darkgreen"
+  >
+  
+  <p style="font-size: 25px; font-weight: bold">My Profile</p>
+  </div>
+  <div class="row p-4">
+    <!--first card-->
+    <div class="col-sm-4">
+      <div class="card" style="width: 18rem;">
+        <img
+          class="card-img-top"
+          [src]="presentStudentImageUrl"
+          alt="Card image cap"
+          height="280"
+        />
+        <div class="card-body" style="text-align: center">
+          <h3 class="card-title">
+            <h5>{{ presentStudent?.Id }}</h5>
+          </h3>
+          <h5>{{ presentStudent?.department }}</h5>
+        </div>
+      </div>
+
+      <div class="col-10">
+        <div class="text-center p-3">
+          <button class="btn btn-success" (click)="editProfile()">
+            Edit Profile
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!--second card-->
+    <div class="col-sm-8">
+      <div class="row">
+        <div class="col-12">
+          <div class="card p-5">
+            <div class="container">
+              
+              <div class="row">
+                <div class="col-md-6">
+                  <b>Name</b>
+                </div>
+                <div class="col-md-6">
+                  <p>{{ presentStudent?.name }}</p>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <b>E-mail</b>
+                </div>
+                <div class="col-md-6">
+                  <p>{{ presentStudent?.email }}</p>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <b>Phone no</b>
+                </div>
+                <div class="col-md-6">
+                  <p>{{ presentStudent?.phone }}</p>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <b>Gender</b>
+                </div>
+                <div class="col-md-6">
+                  <p>{{ presentStudent?.gender }}</p>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <b>Batch</b>
+                </div>
+                <div class="col-md-6">
+                  <p>{{ presentStudent?.batch }}</p>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <b>Parent Phone no</b>
+                </div>
+                <div class="col-md-6">
+                  <p>{{ presentStudent?.parentPhone }}</p>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <b>Parent E-mail</b>
+                </div>
+                <div class="col-md-6">
+                  <p>{{ presentStudent?.parentEmail }}</p>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <b>Status</b>
+                </div>
+                <div class="col-md-6">
+                  <p>{{ presentStudent?.status }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>

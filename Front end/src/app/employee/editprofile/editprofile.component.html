@@ -1,0 +1,61 @@
+<p-toast position="top-center" key="toastElement"></p-toast>
+<div class="container p-5">
+  <h1 style="color: lightcoral; text-align: center">Edit Profile</h1>
+  <div class="row">
+    <div class="col-sm-12 p-2">
+      <form
+        ngNativeValidate
+        #ref="ngForm"
+        (ngSubmit)="onEdit(ref.value); ref.reset()"
+      >
+        <div class="form-group">
+          <label for="exampleInputEmail1">New Email</label>
+          <input
+            type="email"
+            class="form-control"
+            id="exampleInputEmail1"
+            name="email"
+            aria-describedby="emailHelp"
+            placeholder="Enter email"
+            ngModel
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="exampleInputNumber">Your New Phone no</label>
+          <input
+            type="tel"
+            pattern="[7-9]{1}[0-9]{9}"
+            class="form-control"
+            id="exampleInputNumber"
+            name="phone"
+            placeholder="Enter Phone no"
+            ngModel
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="file">Profile Picture</label>
+
+          <p-fileUpload
+            customUpload="true"
+            maxFileSize="1000000"
+            fileLimit="1"
+            invalidFileSizeMessageDetail="Maximum file size allowed is 1MB"
+            invalidFileLimitMessageDetail="Maximum 1 file allowed"
+            (uploadHandler)="myUploader($event)"
+            previewWidth="40"
+            id="file"
+            name="file"
+            
+          ></p-fileUpload>
+        </div>
+
+        <div class="align-center pt-2">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

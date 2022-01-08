@@ -1,0 +1,25 @@
+<p-toast position="top-center" key="toastElement"></p-toast>
+
+<div *ngIf="showScanner" class="scanner-area">
+  <zxing-scanner (scanSuccess)="onCodeResult($event)"></zxing-scanner>
+</div>
+
+<div *ngIf="!showScanner" class="details-area container">
+  <div class="image-area">
+    <img [src]="imageUrl" class="img-thumbnail" />
+  </div>
+
+  <div class="info text-center">
+    <h5>ID : {{ candidateObj?.Id }}</h5>
+    <br />
+    <h5>Name : {{ candidateObj?.name }}</h5>
+    <br />
+    <h5>Department : {{ candidateObj?.department }}</h5>
+  </div>
+</div>
+
+<div *ngIf="!showScanner" class="button-area text-center">
+  <button mat-raised-button (click)="showScannerOnClick()" color="accent">
+    <mat-icon>qr_code_scanner</mat-icon>&nbsp;Scan QR
+  </button>
+</div>

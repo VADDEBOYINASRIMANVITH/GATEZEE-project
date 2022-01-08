@@ -1,0 +1,248 @@
+<p-toast position="top-center" key="toastElement"></p-toast>
+
+<div class="container-fluid">
+  <div class="row">
+    <div
+      class="col text-center"
+      style="margin-top: 15px; margin-bottom: 5px; color: darkgreen"
+    >
+    <br>
+      <p style="font-size: 25px; font-weight: bold">
+        Recent Employee Out Passes
+      </p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col text-right">
+        <button mat-raised-button (click)="refreshTable()" color="primary">
+          <mat-icon>refresh</mat-icon>Refresh
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="container p-3">
+    <div class="row p-3">
+      <div class="col-md-9 p-1">
+        <mat-form-field class="search-class">
+          <input
+            (keyup)="applyFilter1($event.target.value)"
+            matInput
+            placeholder="Search"
+          />
+        </mat-form-field>
+      </div>
+    </div>
+    <div
+      class="container"
+      style="text-align: center"
+      *ngIf="REQUEST_DATA1?.length == 0"
+    >
+      <img
+        src="./../../../assets/nothing.png"
+        alt=""
+        width="600px"
+        height="300px"
+      />
+      <p>No Employee Out Passes.</p>
+    </div>
+    <div class="mat-elevation-z8" *ngIf="REQUEST_DATA1?.length > 0">
+      <table mat-table [dataSource]="dataSource1" matSort>
+        <!-- Id Column -->
+        <ng-container matColumnDef="Id">
+          <th mat-header-cell mat-sort-header *matHeaderCellDef>Id</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.employeeObj.Id }}
+          </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell mat-sort-header *matHeaderCellDef>Name</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.employeeObj.name }}
+          </td>
+        </ng-container>
+
+        <!-- createdDate Column -->
+        <ng-container matColumnDef="createdDate">
+          <th mat-header-cell mat-sort-header *matHeaderCellDef>
+            Created Date
+          </th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.createdDate | date: "longDate" }}&nbsp;
+            {{ element.createdDate | date: "shortTime" }}
+          </td>
+        </ng-container>
+
+        <!-- outGoingDate Column -->
+        <ng-container matColumnDef="outgoingDate">
+          <th mat-header-cell mat-sort-header *matHeaderCellDef>
+            OutGoing Date
+          </th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.outgoingDate | date: "mediumDate" }}&nbsp;{{
+              element.outgoingTime
+            }}
+          </td>
+        </ng-container>
+
+        <!-- reason Column -->
+        <ng-container matColumnDef="reason">
+          <th mat-header-cell mat-sort-header *matHeaderCellDef>Reason</th>
+          <td mat-cell *matCellDef="let element">{{ element.reason }}</td>
+        </ng-container>
+
+        <!-- status Column -->
+        <ng-container matColumnDef="status">
+          <th mat-header-cell mat-sort-header *matHeaderCellDef>Status</th>
+          <td mat-cell *matCellDef="let element">{{ element.status }}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns1"></tr>
+        <tr
+          mat-row
+          (click)="viewParticularEmployeeOutPass(row._id)"
+          *matRowDef="let row; columns: displayedColumns1"
+        ></tr>
+      </table>
+
+      <mat-paginator
+        [length]="REQUEST_DATA1.length"
+        [pageSize]="5"
+        [pageSizeOptions]="[5, 10, 25, 100]"
+      >
+      </mat-paginator>
+    </div>
+  </div>
+
+  <div class="row">
+    <div
+      class="col text-center"
+      style="margin-top: 15px; margin-bottom: 5px; color: darkgreen"
+    >
+    <br><br>
+      <p style="font-size: 25px; font-weight: bold">
+        Recent Student Out Passes
+      </p>
+    </div>
+  </div>
+  <div class="container p-3">
+    <div class="row p-3">
+      <div class="col-md-9 p-1">
+        <mat-form-field class="search-class">
+          <input
+            (keyup)="applyFilter2($event.target.value)"
+            matInput
+            placeholder="Search"
+          />
+        </mat-form-field>
+      </div>
+    </div>
+    <div
+      class="container"
+      style="text-align: center"
+      *ngIf="REQUEST_DATA2?.length == 0"
+    >
+      <img
+        src="./../../../assets/nothing.png"
+        alt=""
+        width="600px"
+        height="300px"
+      />
+      <p>No Student Out Passes.</p>
+    </div>
+    <div class="mat-elevation-z8" *ngIf="REQUEST_DATA2?.length > 0">
+      <table mat-table [dataSource]="dataSource2" matSort>
+        <!-- Id Column -->
+        <ng-container matColumnDef="Id">
+          <th mat-header-cell mat-sort-header *matHeaderCellDef>Id</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.studentObj.Id }}
+          </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell mat-sort-header *matHeaderCellDef>Name</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.studentObj.name }}
+          </td>
+        </ng-container>
+
+        <!-- createdDate Column -->
+        <ng-container matColumnDef="createdDate">
+          <th mat-header-cell mat-sort-header *matHeaderCellDef>
+            Created Date
+          </th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.createdDate | date: "longDate" }}&nbsp;
+            {{ element.createdDate | date: "shortTime" }}
+          </td>
+        </ng-container>
+
+        <!-- outGoingDate Column -->
+        <ng-container matColumnDef="outgoingDate">
+          <th mat-header-cell mat-sort-header *matHeaderCellDef>
+            OutGoing Date
+          </th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.outgoingDate | date: "mediumDate" }}&nbsp;{{
+              element.outgoingTime
+            }}
+          </td>
+        </ng-container>
+
+        <!-- reason Column -->
+        <ng-container matColumnDef="reason">
+          <th mat-header-cell mat-sort-header *matHeaderCellDef>Reason</th>
+          <td mat-cell *matCellDef="let element">{{ element.reason }}</td>
+        </ng-container>
+
+        <!-- status Column -->
+        <ng-container matColumnDef="status">
+          <th mat-header-cell mat-sort-header *matHeaderCellDef>Status</th>
+          <td mat-cell *matCellDef="let element">{{ element.status }}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+        <tr
+          mat-row
+          (click)="viewParticularStudentOutPass(row._id)"
+          *matRowDef="let row; columns: displayedColumns2"
+        ></tr>
+      </table>
+
+      <mat-paginator
+        [length]="REQUEST_DATA2.length"
+        [pageSize]="5"
+        [pageSizeOptions]="[5, 10, 25, 100]"
+      >
+      </mat-paginator>
+    </div>
+  </div>
+<br>
+  <div class="row">
+    <div class="col-6">
+      <h4 style="text-align: center;color:crimson">Student Outpass Acceptance Status</h4>
+      <p-chart
+        type="doughnut"
+        [data]="studentAcceptancePieData"
+        style="position: relative; height: auto"
+      ></p-chart>
+    </div>
+    <br>
+    <div class="col-6">
+      <h4 style="text-align: center;color:crimson">Employee Outpass Acceptance Status</h4>
+      <p-chart
+        type="doughnut"
+        [data]="employeeAcceptancePieData"
+        style="position: relative; height: auto"
+      ></p-chart>
+      <br><br><br>
+    </div>
+    
+  </div>
+</div>

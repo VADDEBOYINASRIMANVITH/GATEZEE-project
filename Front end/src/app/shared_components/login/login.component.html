@@ -1,0 +1,40 @@
+<p-toast position="top-center" key="toastElement"></p-toast>
+
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <img src="../../assets/vnr logo.jpg" id="icon" alt="User Icon" />
+    </div>
+
+    <!-- Login Form -->
+    <form ngNativeValidate #ref="ngForm" (ngSubmit)="onLogin(ref.value)">
+      <input
+        type="text"
+        id="id"
+        class="fadeIn second"
+        name="Id"
+        placeholder="Id"
+        ngModel
+        required
+      />
+      <input
+        type="password"
+        id="password"
+        class="fadeIn third"
+        name="password"
+        placeholder="Password"
+        ngModel
+        required
+      />
+      <input type="submit" class="fadeIn fourth" value="Log In" />
+    </form>
+
+    <!-- Remind Passowrd -->
+    <div id="formFooter">
+      <a class="underlineHover" href="v1/forgotpassword">Forgot Password?</a>
+    </div>
+  </div>
+</div>

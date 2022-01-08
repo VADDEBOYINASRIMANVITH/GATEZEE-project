@@ -1,0 +1,83 @@
+<p-toast position="top-center" key="toastElement"></p-toast>
+<div class="grid-container">
+  <mat-grid-list cols="2" rowHeight="240px">
+    <mat-grid-tile
+      *ngFor="let card of cards | async"
+      [colspan]="card.cols"
+      [rowspan]="card.rows"
+    >
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title >
+            {{ card.title }}
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content">
+          <div *ngIf="card.rank == 2">
+            <table class="table">
+              <tbody>
+                <tr class="table-row2">
+                  <th scope="row">Student Id</th>
+                  <td>{{ presentStudent?.Id }}</td>
+                </tr>
+                <tr class="table-row2">
+                  <th scope="row">Name</th>
+                  <td>{{ presentStudent?.name }}</td>
+                </tr>
+                <tr class="table-row2">
+                  <th scope="row">Department</th>
+                  <td>{{ presentStudent?.department }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div *ngIf="card.rank == 3">
+            <table class="table">
+              <tbody>
+                <tr class="table-row2">
+                  <th scope="row">Mentor name</th>
+                  <td>{{ presentStudentMentorDetails?.name }}</td>
+                </tr>
+                <tr class="table-row2">
+                  <th scope="row">Contact details</th>
+                  <td>{{ presentStudentMentorDetails?.phone }}</td>
+                </tr>
+                <tr class="table-row2">
+                  <th scope="row">Email</th>
+                  <td>{{ presentStudentMentorDetails?.email }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div *ngIf="card.rank == 4">
+            <table class="table">
+              <tbody>
+                <tr class="table-row2">
+                  <th scope="row">HOD name</th>
+                  <td>{{ presentStudentHodDetails?.name }}</td>
+                </tr>
+                <tr class="table-row2">
+                  <th scope="row">Contact details</th>
+                  <td>{{ presentStudentHodDetails?.phone }}</td>
+                </tr>
+                <tr class="table-row2">
+                  <th scope="row">Email</th>
+                  <td>{{ presentStudentHodDetails?.email }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div *ngIf="card.rank == 5">
+            <p-chart
+              type="pie"
+              [data]="piedata"
+              style="position: relative; height: 200; width: 200;"
+            ></p-chart>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
+
+

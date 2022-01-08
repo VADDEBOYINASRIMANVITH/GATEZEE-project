@@ -1,0 +1,122 @@
+<p-toast position="top-center" key="toastElement"></p-toast>
+
+<div class="container-fluid">
+  <div class="backbutton-area">
+    <div class="row">
+      <div class="col-4 text-left">
+        <p-button
+          label="Back"
+          icon="pi pi-chevron-left"
+          styleClass="p-button-sm"
+          (click)="onBackButtonToMyStudents()"
+        ></p-button>
+      </div>
+      <div class="col-4 text-center">
+        <p-button
+          label="Refresh"
+          icon="pi pi-refresh"
+          styleClass="p-button-sm"
+          (click)="refreshTable()"
+        ></p-button>
+      </div>
+      <div class="col-4 text-right">
+        <p-button
+          label="Profile"
+          icon="pi pi-user"
+          styleClass="p-button-sm"
+          (click)="openStudentProfile()"
+        ></p-button>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div
+      class="col text-center"
+      style="margin-top: 15px; margin-bottom: 5px; color: darkgreen"
+    >
+      <p style="font-size: 25px; font-weight: bold">
+        {{ presentStudent.Id }}-{{ presentStudent.name }}'s&nbsp;&nbsp;Out
+        Passes
+      </p>
+    </div>
+  </div>
+
+  <div class="container p-3">
+    <div class="row p-3">
+      <div class="col-md-9 p-1">
+        <mat-form-field class="search-class">
+          <input
+            (keyup)="applyFilter($event.target.value)"
+            matInput
+            placeholder="Search"
+          />
+        </mat-form-field>
+      </div>
+    </div>
+    <div
+      class="container"
+      style="text-align: center"
+      *ngIf="REQUEST_DATA?.length == 0"
+    >
+      <img
+        src="./../../../assets/nothing.png"
+        alt=""
+        width="600px"
+        height="300px"
+      />
+      <p>{{ presentStudent.Id }}&nbsp;&nbsp;has no OutPasses.</p>
+    </div>
+    <div class="mat-elevation-z8" *ngIf="REQUEST_DATA?.length > 0">
+      <table mat-table [dataSource]="dataSource" matSort>
+        <!-- createdDate Column -->
+        <ng-container matColumnDef="createdDate">
+          <th mat-header-cell mat-sort-header *matHeaderCellDef>
+            Created Date
+          </th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.createdDate | date: "longDate" }}&nbsp;
+            {{ element.createdDate | date: "shortTime" }}
+          </td>
+        </ng-container>
+
+        <!-- outGoingDate Column -->
+        <ng-container matColumnDef="outgoingDate">
+          <th mat-header-cell mat-sort-header *matHeaderCellDef>
+            OutGoing Date
+          </th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.outgoingDate | date: "mediumDate" }}&nbsp;{{
+              element.outgoingTime
+            }}
+          </td>
+        </ng-container>
+
+        <!-- reason Column -->
+        <ng-container matColumnDef="reason">
+          <th mat-header-cell mat-sort-header *matHeaderCellDef>Reason</th>
+          <td mat-cell *matCellDef="let element">{{ element.reason }}</td>
+        </ng-container>
+
+        <!-- status Column -->
+        <ng-container matColumnDef="status">
+          <th mat-header-cell mat-sort-header *matHeaderCellDef>Status</th>
+          <td mat-cell *matCellDef="let element">{{ element.status }}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr
+          mat-row
+          (click)="viewParticularOutPass(row._id)"
+          *matRowDef="let row; columns: displayedColumns"
+        ></tr>
+      </table>
+
+      <mat-paginator
+        [length]="REQUEST_DATA.length"
+        [pageSize]="5"
+        [pageSizeOptions]="[5, 10, 25, 100]"
+      >
+      </mat-paginator>
+    </div>
+  </div>
+</div>

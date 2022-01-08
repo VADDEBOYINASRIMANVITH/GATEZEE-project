@@ -1,0 +1,43 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 200px;
+  background-color:black;
+  font-weight: bold;
+}
+
+mat-nav-list a:hover {
+  color: #F2AA4CFF;
+  transition: ease 0.5s;
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.mat-list-item {
+  text-decoration: none;
+  color: white;
+  font-size: 4mm;
+}
+
+.mat-list-item:hover {
+  font-weight: 500;
+}
+
+.mat-icon {
+  font-size: 5.5mm;
+}
+
+.mat-toolbar {
+  color: black;
+  font-size: 30px;
+}

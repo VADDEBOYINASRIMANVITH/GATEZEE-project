@@ -1,0 +1,194 @@
+<p-toast position="top-center" key="toastElement"></p-toast>
+<div class="container">
+  <div class="outer-table">
+    <!--First row data-->
+    <tr>
+      <div class="row">
+        <div class="col-12">
+          <div class="text-center">
+            <h4 *ngIf="data.status == 'pending'">
+              Status : <mat-icon>timelapse</mat-icon>&nbsp;<span
+                style="color: red"
+                >{{ data.status }}</span
+              >
+            </h4>
+
+            <div *ngIf="data.status == 'accepted'">
+              <div class="row">
+                <div class="col-6">
+                  <h4>
+                    Status : <mat-icon>done</mat-icon>&nbsp;<span
+                      style="color: green"
+                      >{{ data.status }}</span
+                    >
+                  </h4>
+                </div>
+                <div class="col-6">
+                  <button
+                    mat-raised-button
+                    (click)="openQRCode(data._id)"
+                    color="accent"
+                  >
+                    <mat-icon>qr_code_scanner</mat-icon> QR
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <h4 *ngIf="data.status == 'rejected' || data.status == 'cancelled'">
+              Status : <mat-icon>close</mat-icon>&nbsp;<span
+                style="color: red"
+                >{{ data.status }}</span
+              >
+            </h4>
+
+            <h4 *ngIf="data.status == 'unread'">
+              Status : <mat-icon>thumb_down_off_alt</mat-icon>&nbsp;<span
+                style="color: red"
+                >{{ data.status }}</span
+              >
+            </h4>
+            <h4 *ngIf="data.status == 'deleted'">
+              Status : <mat-icon>delete</mat-icon>&nbsp;<span
+                style="color: red"
+                >{{ data.status }}</span
+              >
+            </h4>
+          </div>
+        </div>
+      </div>
+    </tr>
+    <tr>
+      <div class="row">
+        <div class="col-sm-6">
+          <table class="table">
+            <tbody>
+              <tr>
+                <th>Out Going Date</th>
+                <td>{{ data.outgoingDate | date: "mediumDate" }}</td>
+              </tr>
+              <tr>
+                <th>Out Going Time</th>
+                <td>{{ data.outgoingTime }}</td>
+              </tr>
+              <tr>
+                <th>Incoming Date</th>
+                <td>
+                  {{ data.outgoingDate | date: "mediumDate" }} &nbsp;(Default)
+                </td>
+              </tr>
+
+              <tr>
+                <th>In Coming Time</th>
+                <td>{{ data.incomingTime }}</td>
+              </tr>
+
+              <tr>
+                <th>Reason</th>
+                <td>{{ data.reason }}</td>
+              </tr>
+
+              <tr>
+                <th>Description</th>
+                <td>{{ data.description }}</td>
+              </tr>
+
+              <tr>
+                <th>Created Date</th>
+                <td>
+                  {{ data.createdDate | date: "mediumDate" }}&nbsp;{{
+                    data.createdDate | date: "shortTime"
+                  }}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="col-sm-6">
+          <div class="col-sm-6">
+            <table class="table">
+              <tbody>
+                <tr *ngIf="data.status == 'accepted' || data.status=='rejected'">
+                  <th>Status Updated By</th>
+                  <td>{{ data.statusUpdatedBy }}</td>
+                </tr>
+                <tr *ngIf="data.status == 'accepted' || data.status=='rejected'">
+                  <th>Status Updated At</th>
+                  <td>
+                    {{ data.statusUpdatedAt | date: "mediumDate" }}&nbsp;{{
+                      data.statusUpdatedAt | date: "shortTime"
+                    }}
+                  </td>
+                </tr>
+                <tr>
+                  <th>Associated Student</th>
+                  <td>{{ data.belongsToStudent }}</td>
+                </tr>
+
+                <tr *ngIf="data.detailsUpdatedAt">
+                  <th>Details Updated At</th>
+                  <td>
+                    {{ data.detailsUpdatedAt | date: "mediumDate" }}&nbsp;{{
+                      data.detailsUpdatedAt | date: "shortTime"
+                    }}
+                  </td>
+                </tr>
+
+                <tr *ngIf="data.isAuthenticated">
+                  <th>Authenticated at gate</th>
+                  <td>{{ data.isAuthenticated }}</td>
+                </tr>
+
+                <tr *ngIf="data.isAuthenticated">
+                  <th>Authenticated By</th>
+                  <td>{{ data.authenticatedBy }}</td>
+                </tr>
+
+                <tr *ngIf="data.isAuthenticated">
+                  <th>Authenticated At</th>
+                  <td>
+                    {{ data.isAuthenticatedAt | date: "mediumDate" }}&nbsp;{{
+                      data.isAuthenticatedAt | date: "shortTime"
+                    }}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </tr>
+
+    <!--2nd row Image-->
+    <tr>
+      <td colspan="2">
+        <div class="row">
+          <div class="col-12">
+            <div class="div" style="text-align: center">
+              <img [src]="imageUrl" alt="" width="500px" height="400px" />
+            </div>
+          </div>
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+      <div class="row p-5" style="text-align: center">
+        <div *ngIf="data.status == 'pending'" class="col-12 text-center">
+          <button mat-raised-button (click)="deleteOutPass()" color="accent">
+            <mat-icon>delete</mat-icon> Delete
+          </button>
+        </div>
+        <div
+          *ngIf="data.status == 'accepted' && data.isAuthenticated == false"
+          class="col-12 text-center"
+        >
+          <button mat-raised-button (click)="cancelOutPass()" color="accent">
+            <mat-icon>close</mat-icon> Cancel
+          </button>
+        </div>
+      </div>
+    </tr>
+  </div>
+</div>
